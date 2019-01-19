@@ -1,0 +1,52 @@
+<div class="container" style="margin: 20px 0;">
+  <div [hidden]="submitted">
+    <h3>Liczba pasażerów</h3>
+    <form (ngSubmit)="onSubmit()" #numberOfPassengersForm="ngForm">
+      <div class="form-group">
+        <label for="startDate">Data początkowa</label>
+        <input type="date" class="form-control" id="startDate"
+               required
+               [(ngModel)]="startDate" name="startDate"
+               #startdate="ngModel">
+        <div [hidden]="startdate.valid || startdate.pristine"
+             class="alert alert-danger">
+          Data początkowa jest wymagana
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="endDate">Data końcowa</label>
+        <input type="date" class="form-control" id="endDate"
+               required
+               [(ngModel)]="endDate" name="endDate"
+               #enddate="ngModel">
+        <div [hidden]="enddate.valid || enddate.pristine"
+             class="alert alert-danger">
+          Data końcowa jest wymagana
+        </div>
+      </div>
+      <div class="btn-group mr-2" role="group">
+        <button type="submit" class="btn btn-success" [disabled]="!numberOfPassengersForm.form.valid">Pokaż</button>
+      </div>
+      <div class="btn-group mr-2" role="group">
+        <button (click)="generateCsv()" class="btn btn-info" [disabled]="!numberOfPassengers">Generuj plik CSV</button>
+      </div> 
+      
+    </form>
+  </div>
+
+  <table class="table" *ngIf="numberOfPassengers" style="margin: 20px 0">
+    <thead>
+      <tr>
+        <th scope="col">Od początku</th>
+        <th scope="col">{{startDate}} - {{endDate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{numberOfPassengers}}</td>
+        <td>{{numberOfPassengersInPeriod}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

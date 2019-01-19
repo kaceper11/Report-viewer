@@ -1,0 +1,26 @@
+<div class="container" style="margin: 20px 0;">
+  <h3>Liczba użytkowników</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Kasowniki</th>
+      <th scope="col">Biletomaty</th>
+      <th scope="col">Administratorzy</th>
+      <th scope="col">Pracownicy</th>
+      <th scope="col">Sprzedawcy</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{numberOfUsers[0]}}</td>
+      <td>{{numberOfUsers[1]}}</td>
+      <td>{{numberOfUsers[2]}}</td>
+      <td>{{numberOfUsers[3]}}</td>
+      <td>{{numberOfUsers[4]}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="btn-group mr-2" role="group">
+    <button (click)="generateCsv()" class="btn btn-info" [disabled]="!numberOfUsers[4]">Generuj plik CSV</button>
+  </div>
+</div>
